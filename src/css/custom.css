@@ -28,3 +28,13 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+h1, h2 {font-family:serif;}
+
+h1 {color: purple;}
+article img {border-radius: 0 2em;}
+
+.navbar {background-color: lightblue;}
+
+
+
