@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Tutorial Intro
 
+:::info[PR PREVIEW TEST]
+This is a modified version of the docs
+:::
+
 Let's discover **Docusaurus in less than 5 minutes**.
 
 ## Getting Started
