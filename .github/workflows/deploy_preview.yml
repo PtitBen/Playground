@@ -20,5 +20,5 @@ jobs:
       - name: Deploy PR Preview
         uses: some-user/deploy-pr-preview-action@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.MY_PAT }}
           build-folder: 'build'
