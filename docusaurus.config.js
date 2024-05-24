@@ -40,6 +40,9 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+        id: 'handbook',
+        path: 'handbook',
+        routeBasePath: 'handbook',          
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -59,6 +62,18 @@ const config = {
       }),
     ],
   ],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'community',
+        path: 'community',
+        routeBasePath: 'community',
+        sidebarPath: './sidebars.js',
+        // ... other options
+      },
+    ],
+  ], 
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -74,10 +89,18 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            docsPluginId: 'handbook',
+            sidebarId: 'handbookSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Handbook',
           },
+          {
+            type: 'docSidebar',
+            docsPluginId: 'community',
+            sidebarId: 'communitySidebar',
+            position: 'left',
+            label: 'Community',
+          },          
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/facebook/docusaurus',
