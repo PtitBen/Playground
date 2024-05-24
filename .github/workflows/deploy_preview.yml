@@ -1,17 +1,24 @@
-name: Deploy Docusaurus Preview
+name: Docusaurus PR Preview
 
 on:
-  push: # Trigger the workflow when code is pushed to the repository
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
-  deploy:
+  preview:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Deploy Preview
-        uses: docuactions/github-pages@main
-        env:
-          DOCUACTIONS_TOKEN: ${{ secrets.MY_PAT }} # Replace with your secret name
-          DOCUACTIONS_DEPLOYMENT: gh-pages # The deployment branch (different from the main one)
+      - uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '21'
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+      - name: Deploy PR Preview
+        uses: some-user/deploy-pr-preview-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          build-folder: 'build'
