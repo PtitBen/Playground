@@ -16,11 +16,11 @@ const config = {
   url: 'https://your-docusaurus-site.example.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/Playground/',
+  baseUrl: process.env.GITHUB_ACTIONS ? `${process.env.BASE_URL}/` : "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
+  organizationName: 'PtitBen', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -40,6 +40,9 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+        id: 'handbook',
+        path: 'handbook',
+        routeBasePath: 'handbook',          
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -59,6 +62,18 @@ const config = {
       }),
     ],
   ],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'community',
+        path: 'community',
+        routeBasePath: 'community',
+        sidebarPath: './sidebars.js',
+        // ... other options
+      },
+    ],
+  ], 
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -74,10 +89,18 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            docsPluginId: 'handbook',
+            sidebarId: 'handbookSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Handbook',
           },
+          {
+            type: 'docSidebar',
+            docsPluginId: 'community',
+            sidebarId: 'communitySidebar',
+            position: 'left',
+            label: 'Community',
+          },          
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/facebook/docusaurus',
@@ -94,7 +117,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/intro',
+                to: '/handbook/docs/intro',
               },
             ],
           },
