@@ -2,6 +2,10 @@
 sidebar_position: 1
 ---
 
+:::info[This means the preview works]
+If you can see this on the PR branch link, it means you did it!
+:::
+
 # Tutorial Intro
 
 Let's discover **Docusaurus in less than 5 minutes**.
